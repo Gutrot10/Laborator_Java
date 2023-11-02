@@ -20,30 +20,37 @@ public class Student {
     }
 
     public String getFirstName() {
+
         return firstName;
     }
 
     public void setFirstName(String firstName) {
+
         this.firstName = firstName;
     }
 
     public String getLastName() {
+
         return lastName;
     }
 
     public void setLastName(String lastName) {
+
         this.lastName = lastName;
     }
 
     public int getGroupNumber() {
+
         return groupNumber;
     }
 
     public void setGroupNumber(int groupNumber) {
+
         this.groupNumber = groupNumber;
     }
 
     public String getFullname(){
+
         return firstName + " " + lastName;
     }
 }

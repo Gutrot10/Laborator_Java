@@ -14,6 +14,7 @@ public class Course {
         this.students = students;
     }
     public void updateProfessor(Professor teacher){
+
         this.teacher = teacher;
     }
 

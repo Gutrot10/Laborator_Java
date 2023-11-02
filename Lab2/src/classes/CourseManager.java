@@ -11,7 +11,7 @@ public class CourseManager {
             Connection conn = null;
             courses = new Course[0];
     }
-  double grades[] = {7.6, 8.7, 9.3, 6.4, 8.1};
+
   double gradesProfessor[] = {7, 7.1, 7.2, 7.3, 7.8, 5.4};
 public void AddCourse(Course course) {
         int newLength = courses.length + 1;
@@ -36,9 +36,9 @@ public void enrollStudent(String courseName,Student student)
    }
    if(targetCourse != null){
        targetCourse.addStudent(student);
-       System.out.println(student + "a fost inscris la" + courseName);
+       System.out.println(student + " a fost inscris la " + courseName);
    }
-   else System.out.println("Cursul cu numele" + courseName + "nu exista");
+   else System.out.println("Cursul " + courseName + "nu exista");
 
 }
 
@@ -85,7 +85,7 @@ public Student[] listStudentsInCourse(String courseName)
 
     public double calculateAverageProfessorGrade(double[] gradesProfessor) {
         if (gradesProfessor.length == 0) {
-            return 0.0; // Return 0 for an empty array or handle as needed
+            return 0.0;
         }
 
         double sum = 0.0;
