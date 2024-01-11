@@ -83,20 +83,32 @@ public Student[] listStudentsInCourse(String courseName)
         }
     }
 
-    public double calculateAverageProfessorGrade(double[] gradesProfessor) {
-        if (gradesProfessor.length == 0) {
+    public double calculateAverageProfessorGrade(Professor professor) {
+        int totalCourses = 0;
+        double totalGrade = 0.0;
+
+        for (Course course : courses) {
+            if (course.getTeacher().equals(professor)) {
+                if (course.getGradesProfessor().length > 0) {
+                    double sum = 0.0;
+                    for (double grade : course.getGradesProfessor()) {
+                        sum += grade;
+                    }
+                    totalGrade += sum / course.getGradesProfessor().length;
+                    totalCourses++;
+                }
+            }
+        }
+
+        if (totalCourses > 0) {
+            return totalGrade / totalCourses;
+        } else {
+            System.out.println("Professor " + professor.getFullname() + " has no grades across all courses.");
             return 0.0;
         }
-
-        double sum = 0.0;
-        for (double gradeProfessor : gradesProfessor) {
-            sum += gradeProfessor;
-        }
-
-        return sum / gradesProfessor.length;
     }
 
-public void DisplayCoursesToConsole() {
+    public void DisplayCoursesToConsole() {
         for (Course c : courses) {
             System.out.println(c);
         }

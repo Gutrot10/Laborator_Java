@@ -5,6 +5,7 @@ public class Course {
     String description;
     Professor teacher;
     Student[] students;
+    double[] gradesProfessor={8.9,7.3,9.1};
 
     public Course(String name, String description,
      Professor teacher, Student[] students) {
@@ -35,6 +36,13 @@ public class Course {
     public Student[] getEnrolledStudents()
     {
         return students;
+    }
+    public Professor getTeacher() {
+        return teacher;
+    }
+
+    public double[] getGradesProfessor() {
+        return gradesProfessor;
     }
 
     @Override
