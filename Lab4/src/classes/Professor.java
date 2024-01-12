@@ -1,6 +1,6 @@
 package classes;
 
-public class Professor extends classes.Person {
+public class Professor extends Person {
 
 
     public Professor(String name, String surname) {
@@ -10,15 +10,20 @@ public class Professor extends classes.Person {
     public String getFullName() {
         return getName() + " " + getSurname();
     }
-    @Override
-    public int compareTo(Student otherStudent) {
-        return 0;
-    }
 
     @Override
+    public int compareTo(Student otherStudent) {
+        int lastNameComparison = this.getSurname().compareTo(otherStudent.getSurname());
+        if (lastNameComparison != 0) {
+            return lastNameComparison;
+        }
+
+        return this.getName().compareTo(otherStudent.getName());
+    }
+    @Override
     public String toString() {
-        return "Professor{" + "name=" + name + ", surame=" +
-                surname + '}';
+        return "Professor{" + "name=" + getName() + ", surame=" +
+                getSurname() + '}';
     }
 
 

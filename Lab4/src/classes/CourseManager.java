@@ -30,7 +30,7 @@ public class CourseManager implements ManagerCourseOperations {
             if (currentCourse.getName().equals(courseToUpdate.getName())) {
                 currentCourse.setDescription(courseToUpdate.getDescription());
                 currentCourse.setTeacher(courseToUpdate.getTeacher());
-                currentCourse.setStudents(courseToUpdate.getStudents());
+                currentCourse.setStudentsSet(courseToUpdate.getStudentsSet());
                 break;
             }
         }
@@ -47,7 +47,7 @@ public class CourseManager implements ManagerCourseOperations {
         Map<Integer, List<Student>> groupedStudents = new HashMap<>();
 
         for (Course course : courses) {
-            for (Student student : course.getStudents()) {
+            for (Student student : course.getStudentsSet()) {
                 int groupNumber = student.getGroupNumber();
 
 
@@ -76,7 +76,7 @@ public class CourseManager implements ManagerCourseOperations {
                 Collections.sort(courses, Comparator.comparing(course -> course.getTeacher().getFullName()));
                 break;
             case "enrolledstudents":
-                Collections.sort(courses, Comparator.comparingInt(course -> course.getStudents().size()));
+                Collections.sort(courses, Comparator.comparingInt(course -> course.getStudentsSet().size()));
                 break;
             default:
                 System.out.println("Invalid sorting criteria");
@@ -99,44 +99,7 @@ public class CourseManager implements ManagerCourseOperations {
 
 
    
-    public double calculateAverageGradeForCourse(String courseName, double[] grades) {
-        Course targetCourse = null;
-        for (Course course : courses) {
-            if (course.name.equals(courseName)) {
-                targetCourse = course;
-                break;
-            }
-        }
 
-        if (targetCourse != null) {
-            if (grades.length > 0) {
-                double sum = 0.0;
-                for (double grade : grades) {
-                    sum += grade;
-                }
-                return sum / grades.length;
-            } else {
-                System.out.println("Nu exista note pentru " + courseName);
-                return 0.0;
-            }
-        } else {
-            System.out.println("Cursul " + courseName + " nu exista.");
-            return 0.0;
-        }
-    }
-
-    public double calculateAverageProfessorGrade(double[] gradesProfessor) {
-        if (gradesProfessor.length == 0) {
-            return 0.0;
-        }
-
-        double sum = 0.0;
-        for (double gradeProfessor : gradesProfessor) {
-            sum += gradeProfessor;
-        }
-
-        return sum / gradesProfessor.length;
-    }
 
     public void DisplayCoursesToConsole() {
         for (Course c : courses) {
