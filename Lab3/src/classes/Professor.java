@@ -2,19 +2,19 @@ package classes;
 
 public class Professor extends Person {
 
-
-
-    @Override
-    public String toString() {
-        return "Professor{" + "name=" + name + ", surame=" +
-                surname + '}';
+    public Professor() {
+        super("", ""); // Default constructor with empty strings for names
     }
 
     public Professor(String firstName, String lastName) {
-        this.name = firstName;
-        this.surname = lastName;
-
+        super(firstName, lastName);
     }
 
+    @Override
+    public String toString() {
+        return "Professor{" +
+                "name='" + getName() + '\'' +
+                ", surname='" + getSurname() + '\'' +
+                '}';
+    }
 }
-

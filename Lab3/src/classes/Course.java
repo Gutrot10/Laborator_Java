@@ -1,15 +1,19 @@
 package classes;
+
 import java.util.ArrayList;
 import java.util.List;
+
 public class Course implements CourseOperations {
-    String name;
-    String description;
-    Professor teacher;
-    List<Student> students;
+    private String name;
+    private String description;
+    private Professor teacher;
+    private List<Student> students;
 
+    public Course() {
+        this("", "", new Professor() , new ArrayList<>());
+    }
 
-    public Course(String name, String description,
-                  Professor teacher, List<Student> students) {
+    public Course(String name, String description, Professor teacher, List<Student> students) {
         this.name = name;
         this.description = description;
         this.teacher = teacher;
@@ -21,6 +25,9 @@ public class Course implements CourseOperations {
         students.add(student);
     }
 
+    public void RemoveStudent(Student studentToRemove) {
+        students.removeIf(student -> student.equals(studentToRemove));
+    }
 
     public void UpdateProfessor(Professor teacher){
 

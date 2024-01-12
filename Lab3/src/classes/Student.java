@@ -1,31 +1,28 @@
 package classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student extends Person {
+    private int groupNumber;
 
-
-    int groupNumber;
+    public Student() {
+        super("", "");
+        this.groupNumber = 0;
+    }
 
     public Student(String firstName, String lastName, int groupNumber) {
-        this.name = firstName;
-        this.surname = lastName;
+        super(firstName, lastName);
         this.groupNumber = groupNumber;
     }
 
     @Override
     public String toString() {
-
-        return "Student{" + "name=" + name + ", surname=" + surname
-                + ", groupNumber="  + groupNumber + '}';
-    }
-
-
-
-    public int getGroupNumber() {
-        return groupNumber;
-    }
-
-    public void setGroupNumber(int groupNumber) {
-        this.groupNumber = groupNumber;
+        return "Student{" +
+                "name='" + getName() + '\'' +
+                ", surname='" + getSurname() + '\'' +
+                ", groupNumber=" + groupNumber +
+                '}';
     }
 
 
